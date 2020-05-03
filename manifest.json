@@ -1,0 +1,32 @@
+{
+  "name": "Compare Result",
+  "description" : "Let's Compare Search Engine",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "css" : ["action/css/popup.css"],
+    "js" : [
+      "action/js/main.js",
+      "action/js/data.js"
+    ]
+  },
+  "content_scripts": [{
+    "matches": ["https://www.google.com/search?*"],
+    "all_frames": true,
+    "run_at": "document_idle",
+    "js": [
+      "content.js"
+    ]
+  }],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
